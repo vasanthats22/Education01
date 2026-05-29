@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Education | Campus Life</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f3ff;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        main {
+            padding-top: 10px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+        }
+
+        section {
+            margin: 80px 0;
+            position: relative;
+            width: 100%;
+            clear: both;
+        }
+
+        /* Section Headers - SAME STYLE AS PREVIOUS PAGES */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #0a2b3e;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #ffc857;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Button Styles - SAME AS PREVIOUS PAGES */
+        .btn-primary, .btn-outline, .btn-card {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #ffc857;
+            color: #0a2b3e;
+        }
+        .btn-primary:hover {
+            background: #e6a017;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ffc857;
+            color: #ffc857;
+        }
+        .btn-outline:hover {
+            background: #ffc857;
+            color: #0a2b3e;
+            transform: translateY(-3px);
+        }
+
+        .btn-card {
+            background: #ffc857;
+            color: #0a2b3e;
+            padding: 10px 24px;
+            border-radius: 8px;
+        }
+        .btn-card:hover {
+            background: #e6a017;
+            transform: translateX(5px);
+        }
+
+        /* ===== SECTION 1: HERO WITH PARALLAX EFFECT ===== */
+        .hero-campus {
+            background: linear-gradient(135deg, #0a2b3e 0%, #1a4a6e 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.25;
+            z-index: 0;
+            transition: transform 0.3s;
+        }
+        .hero-campus:hover .hero-bg {
+            transform: scale(1.05);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 50px;
+            max-width: 800px;
+        }
+        .hero-badge {
+            background: #ffc857;
+            color: #0a2b3e;
+            padding: 6px 18px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .hero-content h1 {
+            font-size: 54px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .hero-content h1 span {
+            color: #ffc857;
+        }
+
+        /* ===== SECTION 2: CAMPUS HIGHLIGHTS (HORIZONTAL SCROLL CARDS) ===== */
+        .highlights-scroll {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            padding: 20px 5px 30px;
+            scroll-snap-type: x mandatory;
+        }
+        .highlights-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        .highlights-scroll::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        .highlights-scroll::-webkit-scrollbar-thumb {
+            background: #ffc857;
+            border-radius: 10px;
+        }
+        .highlight-scroll-card {
+            min-width: 300px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            scroll-snap-align: start;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .highlight-scroll-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(255,200,87,0.2);
+        }
+        .highlight-icon {
+            width: 70px;
+            height: 70px;
+            background: #ffc85720;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+            color: #ffc857;
+        }
+
+        /* ===== SECTION 3: CAMPUS MAP INTERACTIVE ===== */
+        .map-interactive {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .map-image {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .map-pin {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #ffc857;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a2b3e;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .map-pin:hover {
+            transform: scale(1.2);
+        }
+        .map-info {
+            padding: 35px;
+        }
+        .location-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 12px;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        .location-item:hover {
+            background: #ffc85710;
+            transform: translateX(5px);
+        }
+
+        /* ===== SECTION 4: DAILY TIMELINE (VERTICAL TIMELINE) ===== */
+        .daily-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        .daily-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #ffc857;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+            padding-left: 30px;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            background: #ffc857;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #ffc85740;
+        }
+        .timeline-card {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+        .timeline-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        .timeline-time {
+            color: #ffc857;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        /* ===== SECTION 5: CLUBS & SOCIETIES (FLIP CARDS) ===== */
+        .clubs-flip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .flip-card {
+            background: transparent;
+            perspective: 1000px;
+            height: 280px;
+        }
+        .flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: 20px;
+        }
+        .flip-card:hover .flip-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-front, .flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+        }
+        .flip-front {
+            background: white;
+            border: 1px solid #e2e8f0;
+        }
+        .flip-back {
+            background: #0a2b3e;
+            color: white;
+            transform: rotateY(180deg);
+        }
+        .club-icon-flip {
+            font-size: 48px;
+            color: #ffc857;
+            margin-bottom: 15px;
+        }
+
+        /* ===== SECTION 6: EVENTS CALENDAR (GRID WITH DATES) ===== */
+        .events-calendar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .event-cal-card {
+            display: flex;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .event-cal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .event-cal-date {
+            background: #ffc857;
+            padding: 20px;
+            text-align: center;
+            min-width: 90px;
+        }
+        .event-cal-date .day {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0a2b3e;
+        }
+        .event-cal-date .month {
+            font-size: 12px;
+            color: #0a2b3e;
+        }
+        .event-cal-info {
+            padding: 18px;
+            flex: 1;
+        }
+
+        /* ===== SECTION 7: VIDEO TESTIMONIAL ===== */
+        .video-testimonial {
+            background: linear-gradient(135deg, #0a2b3e, #1a4a6e);
+            border-radius: 20px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .video-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: #ffc857;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .testimonial-quote {
+            color: white;
+        }
+        .quote-text {
+            font-size: 22px;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* ===== SECTION 8: FACILITIES SHOWCASE (ACCORDION) ===== */
+        .facilities-accordion {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .facility-item {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .facility-header {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: #f8fafc;
+            font-weight: 600;
+            color: #0a2b3e;
+        }
+        .facility-header i {
+            transition: transform 0.3s;
+            color: #ffc857;
+        }
+        .facility-item.active .facility-header i {
+            transform: rotate(180deg);
+        }
+        .facility-content {
+            padding: 0 25px 20px;
+            display: none;
+            color: #64748b;
+            line-height: 1.6;
+        }
+        .facility-item.active .facility-content {
+            display: block;
+        }
+        .facility-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: none;
+        }
+        .facility-item.active .facility-img {
+            display: block;
+        }
+
+        /* ===== SECTION 9: DINING MENU (PRICING CARDS) ===== */
+        .dining-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .dining-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+        .dining-card:hover {
+            border-color: #ffc857;
+            transform: translateY(-8px);
+        }
+        .dining-icon {
+            font-size: 48px;
+            color: #ffc857;
+            margin-bottom: 15px;
+        }
+        .dining-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffc857;
+            margin: 15px 0;
+        }
+
+        /* ===== SECTION 10: SPORTS & FITNESS (STATS CARDS) ===== */
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .sports-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .sports-card:hover {
+            background: #0a2b3e;
+            transform: translateY(-8px);
+        }
+        .sports-card:hover h3,
+        .sports-card:hover p {
+            color: white;
+        }
+        .sports-icon {
+            font-size: 48px;
+            color: #ffc857;
+            margin-bottom: 15px;
+        }
+
+        /* ===== SECTION 11: CTA WITH COUNTERS ===== */
+        .cta-counters {
+            background: linear-gradient(135deg, #0a2b3e, #1a4a6e);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            color: white;
+        }
+        .counters-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .counter-box h3 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #ffc857;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #ffc857;
+            color: #0a2b3e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-5px); background: #e6a017; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .clubs-flip, .events-calendar, .dining-grid, .sports-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .map-interactive, .video-testimonial, .facilities-accordion {
+                grid-template-columns: 1fr;
+            }
+            .counters-row { gap: 30px; }
+            .hero-content h1 { font-size: 42px; }
+        }
+
+        @media (max-width: 768px) {
+            main { padding-top: 80px; }
+            .container { padding: 0 20px; }
+            section { margin: 50px 0; }
+            .section-header h2 { font-size: 32px; }
+            .clubs-flip, .events-calendar, .dining-grid, .sports-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content { padding: 30px 20px; }
+            .hero-content h1 { font-size: 32px; }
+            .video-testimonial { padding: 30px 20px; }
+            .cta-counters { padding: 40px 20px; }
+            .counter-box h3 { font-size: 36px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 15px; }
+            .section-header h2 { font-size: 28px; }
+            .event-cal-card { flex-direction: column; }
+            .event-cal-date { display: flex; justify-content: center; gap: 10px; padding: 12px; }
+        }
+
+        [data-aos] {
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+        [data-aos="fade-up"] { transform: translateY(50px); }
+        [data-aos="fade-left"] { transform: translateX(-50px); }
+        [data-aos="fade-right"] { transform: translateX(50px); }
+        [data-aos="zoom-in"] { transform: scale(0.9); }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="container">
+
+            <!-- SECTION 1: HERO -->
+            <section class="hero-campus" data-aos="fade-up">
+                <img src="edc4.webp" alt="Campus" class="hero-bg">
+                <div class="hero-content">
+                    <span class="hero-badge">🎓 YOUR SECOND HOME</span>
+                    <h1>Experience <span>Campus Life</span></h1>
+                    <p style="font-size: 18px;">Where learning meets community, creativity, and endless opportunities</p>
+                    <a href="404.html" class="btn-primary" style="margin-top: 25px;">Explore Campus →</a>
+                </div>
+            </section>
+
+            <!-- SECTION 2: CAMPUS HIGHLIGHTS (HORIZONTAL SCROLL) -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Campus Highlights</h2>
+                    <p>What makes our campus special</p>
+                </div>
+                <div class="highlights-scroll">
+                    <div class="highlight-scroll-card"><div class="highlight-icon"><i class="fas fa-building"></i></div><h3>Modern Facilities</h3><p>State-of-the-art labs and classrooms</p><a href="404.html" class="btn-card">Learn More →</a></div>
+                    <div class="highlight-scroll-card"><div class="highlight-icon"><i class="fas fa-users"></i></div><h3>Diverse Community</h3><p>Students from 50+ <br> countries</p><a href="404.html" class="btn-card">Learn More →</a></div>
+                    <div class="highlight-scroll-card"><div class="highlight-icon"><i class="fas fa-tree"></i></div><h3>Green Campus</h3><p>Sustainable eco-friendly environment</p><a href="404.html" class="btn-card">Learn More →</a></div>
+                    <div class="highlight-scroll-card"><div class="highlight-icon"><i class="fas fa-wifi"></i></div><h3>Smart Campus</h3><p>24/7 high-speed <br> connectivity</p><a href="404.html" class="btn-card">Learn More →</a></div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: CAMPUS MAP INTERACTIVE -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Campus Map</h2>
+                    <p>Explore our facilities</p>
+                </div>
+                <div class="map-interactive">
+                    <div class="map-image" style="background-image: url('edc5.webp')"></div>
+                    <div class="map-info">
+                        <div class="location-item"><i class="fas fa-book" style="color:#ffc857; font-size:24px;"></i><div><h3>Main Library</h3><p>Open 24/7 • 5000+ books</p></div></div>
+                        <div class="location-item"><i class="fas fa-flask" style="color:#ffc857; font-size:24px;"></i><div><h3>Science Lab</h3><p>Advanced equipment</p></div></div>
+                        <div class="location-item"><i class="fas fa-utensils" style="color:#ffc857; font-size:24px;"></i><div><h3>Food Court</h3><p>Multi-cuisine dining</p></div></div>
+                        <div class="location-item"><i class="fas fa-dumbbell" style="color:#ffc857; font-size:24px;"></i><div><h3>Sports Complex</h3><p>Gym, pool, courts</p></div></div>
+                        <a href="404.html" class="btn-outline" style="margin-top: 15px;">View Full Map →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: DAILY TIMELINE -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Daily Schedule</h2>
+                    <p>A typical day on campus</p>
+                </div>
+                <div class="daily-timeline">
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card"><div class="timeline-time">08:00 AM</div><h3>Morning Wellness</h3><p>Yoga, meditation, or gym</p></div></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card"><div class="timeline-time">09:30 AM</div><h3>Core Classes</h3><p>Academic sessions start</p></div></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card"><div class="timeline-time">12:30 PM</div><h3>Lunch Break</h3><p>Connect with friends</p></div></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card"><div class="timeline-time">02:00 PM</div><h3>Workshops & Labs</h3><p>Hands-on learning</p></div></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card"><div class="timeline-time">04:30 PM</div><h3>Club Activities</h3><p>Pursue your passions</p></div></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card"><div class="timeline-time">06:00 PM</div><h3>Study Groups</h3><p>Collaborative learning</p></div></div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: CLUBS & SOCIETIES (FLIP CARDS) -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Clubs & Societies</h2>
+                    <p>Find your community</p>
+                </div>
+                <div class="clubs-flip">
+                    <div class="flip-card"><div class="flip-inner"><div class="flip-front"><div class="club-icon-flip"><i class="fas fa-code"></i></div><h3>Tech Club</h3><p>Coding & Innovation</p></div><div class="flip-back"><h3>Join Tech Club</h3><p>Weekly hackathons & workshops</p><a href="404.html" class="btn-primary" style="margin-top:15px;">Join →</a></div></div></div>
+                    <div class="flip-card"><div class="flip-inner"><div class="flip-front"><div class="club-icon-flip"><i class="fas fa-palette"></i></div><h3>Art Club</h3><p>Creativity Hub</p></div><div class="flip-back"><h3>Join Art Club</h3><p>Exhibitions & workshops</p><a href="404.html" class="btn-primary" style="margin-top:15px;">Join →</a></div></div></div>
+                    <div class="flip-card"><div class="flip-inner"><div class="flip-front"><div class="club-icon-flip"><i class="fas fa-music"></i></div><h3>Music Society</h3><p>Find Your Rhythm</p></div><div class="flip-back"><h3>Join Music Society</h3><p>Band practice & performances</p><a href="404.html" class="btn-primary" style="margin-top:15px;">Join →</a></div></div></div>
+                    <div class="flip-card"><div class="flip-inner"><div class="flip-front"><div class="club-icon-flip"><i class="fas fa-heart"></i></div><h3>Volunteer Club</h3><p>Make a Difference</p></div><div class="flip-back"><h3>Join Volunteer Club</h3><p>Community service events</p><a href="404.html" class="btn-primary" style="margin-top:15px;">Join →</a></div></div></div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: EVENTS CALENDAR -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Upcoming Events</h2>
+                    <p>Don't miss out</p>
+                </div>
+                <div class="events-calendar">
+                    <div class="event-cal-card"><div class="event-cal-date"><div class="day">25</div><div class="month">MAR</div></div><div class="event-cal-info"><h3>Annual Tech Fest 2026</h3><p>Showcase your projects & win prizes</p><a href="404.html" class="btn-card" style="margin-top:8px;">Register →</a></div></div>
+                    <div class="event-cal-card"><div class="event-cal-date"><div class="day">05</div><div class="month">APR</div></div><div class="event-cal-info"><h3>Cultural Night</h3><p>Celebrate diversity with performances</p><a href="404.html" class="btn-card" style="margin-top:8px;">Register →</a></div></div>
+                    <div class="event-cal-card"><div class="event-cal-date"><div class="day">15</div><div class="month">APR</div></div><div class="event-cal-info"><h3>Sports Tournament</h3><p>Compete in cricket, football & more</p><a href="404.html" class="btn-card" style="margin-top:8px;">Register →</a></div></div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: VIDEO TESTIMONIAL -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Student Experience</h2>
+                    <p>Hear from our students</p>
+                </div>
+                <div class="video-testimonial">
+                    <div class="video-wrapper">
+                        <video id="campusVideo" poster="eds1.webp">
+                            <source src="edu3.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-play-btn" id="campusPlayBtn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="testimonial-quote">
+                        <p class="quote-text">"The campus life here has been transformative. From amazing facilities to supportive community, everything is perfect."</p>
+                        <h3>- Sarah Johnson</h3>
+                        <p>Computer Science, 2026</p>
+                        <a href="404.html" class="btn-primary" style="margin-top: 20px;">Read More Stories →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: FACILITIES SHOWCASE (ACCORDION) -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Our Facilities</h2>
+                    <p>World-class infrastructure</p>
+                </div>
+                <div class="facilities-accordion">
+                    <div class="facility-item"><div class="facility-header"><span>📚 Library</span><i class="fas fa-chevron-down"></i></div><div class="facility-content">24/7 access, 50,000+ books, digital resources, study pods, and quiet zones.</div><img src="ed18.webp" class="facility-img"></div>
+                    <div class="facility-item"><div class="facility-header"><span>🔬 Science Labs</span><i class="fas fa-chevron-down"></i></div><div class="facility-content">Modern equipment, research facilities, and dedicated lab assistants.</div><img src="ed17.webp" class="facility-img"></div>
+                    <div class="facility-item"><div class="facility-header"><span>🏋️ Sports Complex</span><i class="fas fa-chevron-down"></i></div><div class="facility-content">Gym, swimming pool, basketball courts, and fitness trainers.</div><img src="ed16.webp" class="facility-img"></div>
+                    <div class="facility-item"><div class="facility-header"><span>🍽️ Cafeteria</span><i class="fas fa-chevron-down"></i></div><div class="facility-content">Multi-cuisine food court, healthy options, and student discounts.</div><img src="ed15.webp" class="facility-img"></div>
+                </div>
+            </section>
+
+            <!-- SECTION 9: DINING MENU -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Cafeteria Favorites</h2>
+                    <p>Delicious meals made fresh daily</p>
+                </div>
+                <div class="dining-grid">
+                    <div class="dining-card"><div class="dining-icon"><i class="fas fa-mug-hot"></i></div><h3>Morning Brew</h3><p>Fresh coffee & pastries</p><div class="dining-price">$2.50</div><a href="404.html" class="btn-card">Order →</a></div>
+                    <div class="dining-card"><div class="dining-icon"><i class="fas fa-utensils"></i></div><h3>Lunch Combo</h3><p>Healthy balanced meals</p><div class="dining-price">$7.99</div><a href="404.html" class="btn-card">Order →</a></div>
+                    <div class="dining-card"><div class="dining-icon"><i class="fas fa-apple-alt"></i></div><h3>Snack Box</h3><p>Healthy grab & go</p><div class="dining-price">$4.50</div><a href="404.html" class="btn-card">Order →</a></div>
+                </div>
+            </section>
+
+            <!-- SECTION 10: SPORTS & FITNESS -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Sports & Fitness</h2>
+                    <p>Stay active and healthy</p>
+                </div>
+                <div class="sports-grid">
+                    <div class="sports-card"><div class="sports-icon"><i class="fas fa-futbol"></i></div><h3>Football</h3><p>2 fields • Weekly matches</p><a href="404.html" class="btn-card">Join →</a></div>
+                    <div class="sports-card"><div class="sports-icon"><i class="fas fa-basketball-ball"></i></div><h3>Basketball</h3><p>3 courts • Tournaments</p><a href="404.html" class="btn-card">Join →</a></div>
+                    <div class="sports-card"><div class="sports-icon"><i class="fas fa-swimmer"></i></div><h3>Swimming</h3><p>Olympic pool • Training</p><a href="404.html" class="btn-card">Join →</a></div>
+                    <div class="sports-card"><div class="sports-icon"><i class="fas fa-dumbbell"></i></div><h3>Gym</h3><p>Modern equipment • Trainers</p><a href="404.html" class="btn-card">Join →</a></div>
+                </div>
+            </section>
+
+            <!-- SECTION 11: CTA WITH COUNTERS -->
+            <section class="cta-counters" data-aos="zoom-in">
+                <h2>Join Our Vibrant Community</h2>
+                <p>Become part of something amazing</p>
+                <div class="counters-row">
+                    <div class="counter-box"><h3 id="count1">0</h3><p>Active Students</p></div>
+                    <div class="counter-box"><h3 id="count2">0</h3><p>Clubs & Societies</p></div>
+                    <div class="counter-box"><h3 id="count3">0</h3><p>Events Yearly</p></div>
+                    <div class="counter-box"><h3 id="count4">0</h3><p>Happy Alumni</p></div>
+                </div>
+                <div class="cta-buttons">
+                    <a href="404.html" class="btn-primary" style="background: #ffc857; color: #0a2b3e;">Apply Now</a>
+                    <a href="404.html" class="btn-outline" style="border-color: white; color: white;">Schedule a Tour</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: false, mirror: true, offset: 50 });
+
+        // Video Play/Pause
+        const campusVideo = document.getElementById('campusVideo');
+        const campusPlayBtn = document.getElementById('campusPlayBtn');
+        if (campusVideo && campusPlayBtn) {
+            campusPlayBtn.addEventListener('click', () => {
+                if (campusVideo.paused) {
+                    campusVideo.play();
+                    campusPlayBtn.style.opacity = '0';
+                } else {
+                    campusVideo.pause();
+                    campusPlayBtn.style.opacity = '1';
+                }
+            });
+            campusVideo.addEventListener('pause', () => { campusPlayBtn.style.opacity = '1'; });
+            campusVideo.addEventListener('play', () => { campusPlayBtn.style.opacity = '0'; });
+            campusVideo.addEventListener('ended', () => { campusPlayBtn.style.opacity = '1'; });
+        }
+
+        // Counter Animation
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString() + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString() + '+';
+                }
+            }, 40);
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(document.getElementById('count1'), 5000);
+                    animateCounter(document.getElementById('count2'), 50);
+                    animateCounter(document.getElementById('count3'), 200);
+                    animateCounter(document.getElementById('count4'), 15000);
+                    counterObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+        const ctaSection = document.querySelector('.cta-counters');
+        if (ctaSection) counterObserver.observe(ctaSection);
+
+        // Facilities Accordion
+        document.querySelectorAll('.facility-item').forEach(item => {
+            const header = item.querySelector('.facility-header');
+            header.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Header Menu Init
+        function initHeaderMenu() {
+            setTimeout(() => {
+                const hamburger = document.getElementById('hamburgerBtn');
+                const fullscreenMenu = document.getElementById('fullscreenMenu');
+                const closeBtn = document.getElementById('closeMenuBtn');
+                if (hamburger && fullscreenMenu) {
+                    const newHamburger = hamburger.cloneNode(true);
+                    hamburger.parentNode.replaceChild(newHamburger, hamburger);
+                    const newHamburgerBtn = document.getElementById('hamburgerBtn');
+                    const openMenu = (e) => { e.stopPropagation(); fullscreenMenu.classList.add('active'); document.body.style.overflow = 'hidden'; };
+                    const closeMenu = () => { fullscreenMenu.classList.remove('active'); document.body.style.overflow = ''; };
+                    if (newHamburgerBtn) newHamburgerBtn.addEventListener('click', openMenu);
+                    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+                    document.querySelectorAll('.mobile-nav-links a, .mobile-actions a').forEach(link => { link.addEventListener('click', closeMenu); });
+                    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && fullscreenMenu.classList.contains('active')) closeMenu(); });
+                }
+            }, 100);
+        }
+
+        // Load Header and Footer
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('header.html').then(res => res.text()).then(data => { document.getElementById('header-placeholder').innerHTML = data; initHeaderMenu(); }).catch(() => { document.getElementById('header-placeholder').innerHTML = '<div style="background:#0a2b3e; color:white; padding:20px; text-align:center;">Header Not Found</div>'; });
+            fetch('footer.html').then(res => res.text()).then(data => { document.getElementById('footer-placeholder').innerHTML = data; }).catch(() => { document.getElementById('footer-placeholder').innerHTML = '<div style="background:#0a2b3e; color:white; padding:40px; text-align:center;">Footer Not Found</div>'; });
+        });
+
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { backToTop.classList.toggle('show', window.scrollY > 500); });
+        backToTop.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    </script>
+</body>
+</html>

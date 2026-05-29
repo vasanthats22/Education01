@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Education — Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* FIXED: Padding to prevent header overlap */
+        main {
+            padding-top: 40px;
+            min-height: 100vh;
+        }
+
+        .mid-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        section {
+            margin: 120px 0;
+            position: relative;
+            width: 100%;
+            clear: both;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #0a2b3e;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #ffc857;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ANIMATIONS */
+        [data-aos="fade-left"] {
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        [data-aos="fade-right"] {
+            transform: translateX(50px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        [data-aos="fade-up"] {
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        [data-aos="fade-down"] {
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        [data-aos="zoom-in"] {
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        [data-aos="flip-left"] {
+            transform: perspective(2500px) rotateY(-100deg);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        [data-aos].aos-animate {
+            transform: translate(0) scale(1) rotateY(0);
+            opacity: 1;
+        }
+
+        /* BUTTON STYLES - Your color scheme */
+        .primary-btn, .outline-btn, .cta-light, .cta-dark, .tab-btn, .resource-btn, .video-btn, .card-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 60px;
+            padding: 12px 28px;
+        }
+
+        .primary-btn {
+            background: #ffc857;
+            color: #0a2b3e;
+        }
+        .primary-btn:hover {
+            background: #e6a017;
+            color: #0a2b3e;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255,200,87,0.4);
+        }
+
+        .outline-btn {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        .outline-btn:hover {
+            background: #ffc857;
+            color: #0a2b3e;
+            border-color: #ffc857;
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .cta-light {
+            background: white;
+            color: #0a2b3e;
+        }
+        .cta-light:hover {
+            background: #ffc857;
+            color: #0a2b3e;
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .cta-dark {
+            background: #0a2b3e;
+            color: white;
+            border: 2px solid white;
+        }
+        .cta-dark:hover {
+            background: #ffc857;
+            color: #0a2b3e;
+            border-color: #ffc857;
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 2px solid #e2e8f0;
+            color: #64748b;
+        }
+        .tab-btn:hover {
+            background: #ffc857;
+            color: #0a2b3e;
+            border-color: #ffc857;
+            transform: scale(1.05);
+        }
+        .tab-btn.active {
+            background: #ffc857;
+            border-color: #ffc857;
+            color: #0a2b3e;
+        }
+
+        .resource-btn, .card-btn, .video-btn {
+            background: transparent;
+            color: #ffc857;
+            padding: 8px 16px;
+        }
+        .resource-btn:hover, .card-btn:hover, .video-btn:hover {
+            background: #ffc857;
+            color: #0a2b3e;
+            transform: translateX(5px);
+        }
+
+        /* SECTION 1: HERO */
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            margin-top: 20px;
+        }
+        .hero-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 900px;
+            padding: 60px;
+            background: rgba(10,43,62,0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            margin: 0 auto;
+            text-align: center;
+            width: 90%;
+        }
+        .hero-badge {
+            background: #ffc857;
+            color: #0a2b3e;
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            animation: pulse 2s infinite;
+        }
+        .hero-content h1 { font-size: 56px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+        .hero-content h1 span { color: #ffc857; }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; margin: 35px 0 25px; flex-wrap: wrap; }
+        .hero-stats { display: flex; gap: 30px; justify-content: center; color: rgba(255,255,255,0.9); flex-wrap: wrap; }
+
+        /* SECTION 2: CARDS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .help-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+        }
+        .help-card-inner { width: 100%; }
+        .help-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,200,87,0.2);
+            border-color: #ffc857;
+        }
+        .help-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+        }
+        .help-card:hover img { transform: scale(1.05); }
+        .help-card h3 { font-size: 24px; color: #0a2b3e; margin-bottom: 15px; font-weight: 700; }
+        .card-description { color: #64748b; line-height: 1.6; margin-bottom: 25px; font-size: 16px; }
+
+        /* SECTION 3: DIAGONAL SPLIT */
+        .diagonal-section {
+            background: linear-gradient(135deg, #0a2b3e 0%, #ffc857 100%);
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        .diagonal-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 60px;
+        }
+        .diagonal-text { color: white; }
+        .diagonal-text h2 { font-size: 42px; margin-bottom: 20px; position: relative; padding-bottom: 15px; }
+        .diagonal-text h2:after { content: ''; position: absolute; bottom: 0; left: 0; width: 100px; height: 4px; background: white; }
+        .diag-feature { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .diag-feature i { width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffc857; }
+        .diagonal-image img { width: 100%; border-radius: 20px; display: block; transition: transform 0.5s; }
+        .diagonal-image img:hover { transform: scale(1.05) rotate(1deg); }
+
+        /* SECTION 4: MASONRY GRID - FULLY RESPONSIVE */
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 250px;
+    gap: 20px;
+}
+.masonry-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.masonry-item.large { grid-row: span 2; }
+.masonry-item.wide { grid-column: span 2; }
+.masonry-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.masonry-item:hover img { transform: scale(1.1); }
+.masonry-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 20px;
+    background: linear-gradient(to top, #0a2b3e, transparent);
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.5s;
+}
+.masonry-item:hover .masonry-overlay { transform: translateY(0); }
+
+/* RESPONSIVE FIXES */
+@media (max-width: 992px) {
+    .masonry-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 220px;
+        gap: 18px;
+    }
+    .masonry-item.large, .masonry-item.wide {
+        grid-row: span 1;
+        grid-column: span 1;
+    }
+}
+@media (max-width: 768px) {
+    .masonry-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+        gap: 15px;
+    }
+}
+@media (max-width: 576px) {
+    .masonry-grid {
+        grid-template-columns: 1fr;  /* THIS SHOWS ALL 6 CARDS VERTICALLY */
+        grid-auto-rows: 220px;
+        gap: 16px;
+    }
+    .masonry-overlay {
+        transform: translateY(0);
+        background: linear-gradient(to top, #0a2b3e, rgba(10,43,62,0.7));
+    }
+    .masonry-overlay h4 { font-size: 18px; }
+    .masonry-overlay p { font-size: 13px; }
+    .resource-btn { padding: 5px 12px; font-size: 11px; }
+}
+
+        /* SECTION 5: TIMELINE */
+        .timeline-container { position: relative; padding: 40px 0; }
+        .timeline-container:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: #ffc857;
+        }
+        .timeline-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .timeline-block:nth-child(even) { flex-direction: row-reverse; }
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .timeline-dot {
+            width: 60px;
+            height: 60px;
+            background: #ffc857;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a2b3e;
+            font-weight: 700;
+            font-size: 24px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            transition: all 0.3s;
+        }
+        .timeline-dot:hover {
+            background: #e6a017;
+            color: white;
+            transform: translateX(-50%) scale(1.2);
+        }
+
+        /* SECTION 6: VIDEO CARDS */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .video-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 350px;
+            background: #0a2b3e;
+        }
+        .video-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10,43,62,0.7) 0%, rgba(255,200,87,0.5) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .video-card:hover .video-overlay { opacity: 1; }
+        .video-play {
+            width: 80px;
+            height: 80px;
+            background: #ffc857;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a2b3e;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* SECTION 7: STATS */
+        .stats-animated {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .stat-animated-item {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .stat-animated-item:hover {
+            background: #ffc857;
+            transform: translateY(-10px);
+        }
+        .stat-animated-item:hover .stat-number,
+        .stat-animated-item:hover p { color: #0a2b3e; }
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,200,87,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: #ffc857;
+            transition: all 0.3s;
+        }
+        .stat-animated-item:hover .stat-icon { background: white; color: #0a2b3e; }
+        .stat-number { font-size: 42px; font-weight: 800; color: #0a2b3e; margin-bottom: 5px; transition: all 0.3s; }
+
+        /* SECTION 8: TABS */
+        .tabs-wrapper {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+        }
+        .tabs-header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tab-pane {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            animation: fadeIn 0.5s;
+        }
+        .tab-pane.active { display: grid; }
+        .tab-pane img { width: 100%; border-radius: 20px; }
+        .tab-pane ul { list-style: none; margin: 20px 0; }
+        .tab-pane li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+
+        /* SECTION 9: PARALLAX */
+        .parallax-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .parallax-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .parallax-image { height: 200px; overflow: hidden; }
+        .parallax-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .parallax-card:hover .parallax-image img { transform: scale(1.1); }
+        .parallax-content { padding: 30px; }
+
+        /* SECTION 10: SPLIT SCREEN */
+        .split-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            min-height: 400px;
+        }
+        .split-item {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+        }
+        .split-item.left { background-image: url('ed1.webp'); }
+        .split-item.right { background-image: url('ed2.webp'); }
+        .split-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            transform: translateY(100px);
+            transition: transform 0.5s;
+        }
+        .split-item:hover .split-overlay { transform: translateY(0); }
+        .split-overlay h3 { font-size: 32px; margin-bottom: 15px; }
+
+        /* SECTION 11: HEXAGON */
+        .hexagon-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px 20px;
+            justify-items: center;
+        }
+        .hex-card {
+            width: 100%;
+            max-width: 220px;
+            height: 230px;
+            background: white;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .hex-card:hover {
+            background: #ffc857;
+            transform: scale(1.05);
+        }
+        .hex-card i { font-size: 42px; color: #ffc857; margin-bottom: 10px; transition: all 0.3s; }
+        .hex-card:hover i { color: #0a2b3e; }
+        .hex-card h4 { transition: all 0.3s; }
+        .hex-card:hover h4 { color: #0a2b3e; }
+
+        /* SECTION 12: CAROUSEL */
+        .carousel-wrapper { overflow: hidden; padding: 30px 0; }
+        .carousel-track {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+            animation: scrollInf 35s linear infinite;
+        }
+        .carousel-track:hover { animation-play-state: paused; }
+        @keyframes scrollInf {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100% - 30px)); }
+        }
+        .carousel-card {
+            min-width: 330px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .carousel-card i { font-size: 40px; color: #ffc857; margin-bottom: 20px; }
+
+        /* SECTION 13: RESOURCE GRID */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .resource-card {
+            background: white;
+            border-radius: 30px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 40px rgba(255,200,87,0.2);
+        }
+        .resource-card i { font-size: 48px; color: #ffc857; margin-bottom: 20px; }
+
+        /* SECTION 14: CTA ANIMATED */
+        .cta-animated {
+            background: linear-gradient(135deg, #0a2b3e, #ffc857, #0a2b3e);
+            background-size: 300% 300%;
+            animation: gradientMove 6s ease infinite;
+            border-radius: 30px;
+            padding: 80px;
+            text-align: center;
+            color: white;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .cta-animated h2 { font-size: 42px; margin-bottom: 20px; }
+
+        /* SECTION 15: ACCREDITATION */
+        .accreditation-section {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255,200,87,0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255,200,87,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,200,87,0); }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #ffc857;
+            color: #0a2b3e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: 2px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover {
+            background: #e6a017;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(255,200,87,0.4);
+        }
+
+        @media (max-width: 1200px) {
+            .stats-animated, .parallax-grid, .resource-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .masonry-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 992px) {
+            .mid-section { padding: 0 20px; }
+            .hero-content h1 { font-size: 42px; }
+            .diagonal-content, .tab-pane.active, .split-container, .video-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline-container:before { left: 30px; transform: none; }
+            .timeline-block, .timeline-block:nth-child(even) {
+                flex-direction: column;
+                margin-left: 60px;
+            }
+            .timeline-content { width: 100%; }
+            .timeline-dot { left: -30px; transform: none; }
+            .hexagon-container { grid-template-columns: repeat(2, 1fr); }
+            .masonry-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            main { padding-top: 80px; }
+            .mid-section { padding: 0 15px; }
+            .hero-content h1 { font-size: 32px; }
+            .cards-grid, .stats-animated, .parallax-grid, .masonry-grid,
+            .video-grid, .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            .tabs-header { flex-direction: column; }
+            .hexagon-container { grid-template-columns: repeat(2, 1fr); }
+            .hex-card { max-width: 180px; height: 200px; }
+            .split-container { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .hexagon-container { grid-template-columns: 1fr; }
+            .hex-card { max-width: 220px; margin: 0 auto; }
+            .carousel-card { min-width: 260px; }
+        }
+        html, body { max-width: 100%; overflow-x: hidden; }
+        img, video, svg { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="mid-section">
+
+            <!-- SECTION 1: HERO -->
+            <section class="hero-section" data-aos="fade-up">
+                <video class="hero-bg-video" autoplay muted loop playsinline>
+                    <source src="edu4.mp4" type="video/mp4">
+                </video>
+                <div class="hero-content">
+                    <span class="hero-badge">📚 Trusted by 50,000+ Learners</span>
+                    <h1> <span>Master Future-Ready Skills with AI-Powered Education</span></h1>
+                    <p style="font-size: 18px; margin-bottom: 30px;">Join 50,000+ students who transformed their careers through our expert-led courses.</p>
+                    <div class="hero-buttons">
+                        <button class="primary-btn" onclick="window.location.href='404.html'"><i class="fas fa-play"></i> Start Learning Today</button>
+                        <button class="outline-btn" onclick="window.location.href='404.html'"><i class="fas fa-search"></i> Explore Courses</button>
+                    </div>
+                    <div class="hero-stats">
+                        <span><i class="fas fa-check-circle" style="color: #ffc857;"></i> 500+ Courses</span>
+                        <span><i class="fas fa-check-circle" style="color: #ffc857;"></i> 50K+ Students</span>
+                        <span><i class="fas fa-check-circle" style="color: #ffc857;"></i> 95% Success</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: FEATURES CARDS -->
+            <section>
+                <div class="section-header" data-aos="fade-down">
+                    <h2>How We Empower You</h2>
+                    <p>Powerful features to accelerate your learning journey</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="help-card" data-aos="zoom-in"><div class="help-card-inner"><img src="ed1.webp" alt="AI"><h3>AI Learning Path</h3><p class="card-description">Personalized course recommendations based on your goals.</p><button class="card-btn" onclick="window.location.href='404.html'">Learn More →</button></div></div>
+                    <div class="help-card" data-aos="zoom-in" data-aos-delay="50"><div class="help-card-inner"><img src="ed2.webp" alt="Certificate"><h3>Verified Certificates</h3><p class="card-description">Earn recognized credentials from industry experts.</p><button class="card-btn" onclick="window.location.href='404.html'">Learn More →</button></div></div>
+                    <div class="help-card" data-aos="zoom-in" data-aos-delay="100"><div class="help-card-inner"><img src="ed4.webp" alt="Pace"><h3>Learn at Your Pace</h3><p class="card-description">Self-paced learning with lifetime access to materials.</p><button class="card-btn" onclick="window.location.href='404.html'">Learn More →</button></div></div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: DIAGONAL SPLIT -->
+            <section class="diagonal-section" data-aos="fade-left">
+                <div class="diagonal-content">
+                    <div class="diagonal-text" data-aos="fade-right"><h2>Your Learning Journey Starts Here</h2><p style="margin-bottom: 30px;">We provide all the tools you need to advance your skills.</p><div class="diagonal-features"><div class="diag-feature"><i class="fas fa-check"></i><span>Personalized course recommendations</span></div><div class="diag-feature"><i class="fas fa-check"></i><span>Expert mentors and career advice</span></div><div class="diag-feature"><i class="fas fa-check"></i><span>Direct messaging with instructors</span></div><div class="diag-feature"><i class="fas fa-check"></i><span>Industry trends and insights</span></div></div><button class="primary-btn" style="background: white; color: #0a2b3e; margin-top: 20px;" onclick="window.location.href='404.html'">Start Learning Free</button></div>
+                    <div class="diagonal-image" data-aos="fade-left"><img src="ed5.webp" alt="Learning"></div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: MASONRY CATEGORIES -->
+            <!-- SECTION 4: MASONRY CATEGORIES -->
+<section>
+    <div class="section-header" data-aos="fade-down">
+        <h2>Popular Categories</h2>
+        <p>Explore courses across various domains</p>
+    </div>
+    <div class="masonry-grid">
+        <div class="masonry-item" data-aos="fade-left">
+            <img src="ed6.webp" alt="Tech">
+            <div class="masonry-overlay">
+                <h4>Technology</h4>
+                <p>180+ courses</p>
+                <button class="resource-btn" onclick="window.location.href='404.html'">Explore →</button>
+            </div>
+        </div>
+        <div class="masonry-item" data-aos="fade-right">
+            <img src="ed7.webp" alt="Business">
+            <div class="masonry-overlay">
+                <h4>Business</h4>
+                <p>120+ courses</p>
+                <button class="resource-btn" onclick="window.location.href='404.html'">Explore →</button>
+            </div>
+        </div>
+        <div class="masonry-item" data-aos="fade-left">
+            <img src="ed8.webp" alt="Data">
+            <div class="masonry-overlay">
+                <h4>Data Science</h4>
+                <p>75+ courses</p>
+                <button class="resource-btn" onclick="window.location.href='404.html'">Explore →</button>
+            </div>
+        </div>
+        <div class="masonry-item" data-aos="fade-right">
+            <img src="ed9.webp" alt="Design">
+            <div class="masonry-overlay">
+                <h4>Design</h4>
+                <p>90+ courses</p>
+                <button class="resource-btn" onclick="window.location.href='404.html'">Explore →</button>
+            </div>
+        </div>
+        <div class="masonry-item" data-aos="fade-left">
+            <img src="ed10.webp" alt="Marketing">
+            <div class="masonry-overlay">
+                <h4>Marketing</h4>
+                <p>85+ courses</p>
+                <button class="resource-btn" onclick="window.location.href='404.html'">Explore →</button>
+            </div>
+        </div>
+        <div class="masonry-item" data-aos="fade-right">
+            <img src="ed11.webp" alt="AI">
+            <div class="masonry-overlay">
+                <h4>AI & ML</h4>
+                <p>60+ courses</p>
+                <button class="resource-btn" onclick="window.location.href='404.html'">Explore →</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <!-- SECTION 5: TIMELINE -->
+            <section>
+                <div class="section-header" data-aos="fade-down"><h2>Your Path to Mastery</h2><p>4 simple steps to become an expert</p></div>
+                <div class="timeline-container">
+                    <div class="timeline-block"><div class="timeline-content"><h3>Create Profile</h3><p>Sign up and set your learning goals</p><button class="resource-btn" onclick="window.location.href='404.html'">Get Started →</button></div><div class="timeline-dot">1</div></div>
+                    <div class="timeline-block"><div class="timeline-content"><h3>Get Matched</h3><p>AI recommends personalized courses</p><button class="resource-btn" onclick="window.location.href='404.html'">See How →</button></div><div class="timeline-dot">2</div></div>
+                    <div class="timeline-block"><div class="timeline-content"><h3>Learn & Track</h3><p>Complete lessons and track progress</p><button class="resource-btn" onclick="window.location.href='404.html'">Try Now →</button></div><div class="timeline-dot">3</div></div>
+                    <div class="timeline-block"><div class="timeline-content"><h3>Get Certified</h3><p>Earn verified certificates</p><button class="resource-btn" onclick="window.location.href='404.html'">Success Stories →</button></div><div class="timeline-dot">4</div></div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: VIDEO SHOWCASE -->
+            <section>
+                <div class="section-header" data-aos="fade-down"><h2>See Learning in Action</h2><p>Watch how students master new skills</p></div>
+                <div class="video-grid">
+                    <div class="video-card"><video id="video1" loop playsinline><source src="edu1.mp4" type="video/mp4"></video><div class="video-overlay"><div class="video-play"><i class="fas fa-play"></i></div><h3>Interactive Learning</h3><button class="video-btn" onclick="document.getElementById('video1').play()">Play Video</button></div></div>
+                    <div class="video-card"><video id="video2" loop playsinline><source src="edu2.mp4" type="video/mp4"></video><div class="video-overlay"><div class="video-play"><i class="fas fa-play"></i></div><h3>Live Mentorship</h3><button class="video-btn" onclick="document.getElementById('video2').play()">Play Video</button></div></div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: STATS -->
+            <section style="background: #0a2b3e; border-radius: 30px; padding: 60px;" data-aos="fade-up">
+                <div class="section-header"><h2 style="color:white;">Our Impact in Numbers</h2><p style="color:rgba(255,255,255,0.8);">Trusted by learners worldwide</p></div>
+                <div class="stats-animated">
+                    <div class="stat-animated-item"><div class="stat-icon"><i class="fas fa-book"></i></div><div class="stat-number">500+</div><p>Expert Courses</p></div>
+                    <div class="stat-animated-item"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-number">50K+</div><p>Active Learners</p></div>
+                    <div class="stat-animated-item"><div class="stat-icon"><i class="fas fa-chalkboard-user"></i></div><div class="stat-number">200+</div><p>Expert Instructors</p></div>
+                    <div class="stat-animated-item"><div class="stat-icon"><i class="fas fa-certificate"></i></div><div class="stat-number">95%</div><p>Completion Rate</p></div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: TABS -->
+            <section class="tabs-wrapper" data-aos="fade-up">
+                <div class="section-header"><h2>Solutions for Every Learner</h2><p>Tailored features for different needs</p></div>
+                <div class="tabs-header"><button class="tab-btn active" onclick="showTab(event, 'tab1')">For Students</button><button class="tab-btn" onclick="showTab(event, 'tab2')">For Professionals</button><button class="tab-btn" onclick="showTab(event, 'tab3')">For Enterprises</button></div>
+                <div id="tab1" class="tab-pane active"><div><h3 style="font-size:28px;">Master New Skills</h3><p>Access hundreds of courses.</p><ul><li><i class="fas fa-check" style="color:#ffc857;"></i> AI-powered matching</li><li><i class="fas fa-check" style="color:#ffc857;"></i> One-click enrollment</li></ul><button class="primary-btn" onclick="window.location.href='404.html'">Start Learning</button></div><img src="ed15.webp" alt="Students"></div>
+                <div id="tab2" class="tab-pane"><div><h3 style="font-size:28px;">Advance Your Career</h3><p>Upskill with recognized courses.</p><ul><li><i class="fas fa-check" style="color:#ffc857;"></i> Career-focused curriculum</li><li><i class="fas fa-check" style="color:#ffc857;"></i> Industry certificates</li></ul><button class="primary-btn" onclick="window.location.href='404.html'">Browse Courses</button></div><img src="ed16.webp" alt="Professionals"></div>
+                <div id="tab3" class="tab-pane"><div><h3 style="font-size:28px;">Enterprise Solutions</h3><p>Complete LMS for teams.</p><ul><li><i class="fas fa-check" style="color:#ffc857;"></i> Team management</li><li><i class="fas fa-check" style="color:#ffc857;"></i> Custom learning paths</li></ul><button class="primary-btn" onclick="window.location.href='404.html'">Contact Sales</button></div><img src="ed17.webp" alt="Enterprises"></div>
+            </section>
+
+            <!-- SECTION 9: RESOURCES -->
+            <section>
+                <div class="section-header" data-aos="fade-down"><h2>Learning Resources</h2><p>Expert advice to accelerate your learning</p></div>
+                <div class="parallax-grid">
+                    <div class="parallax-card"><div class="parallax-image"><img src="ed12.webp" alt="Study"></div><div class="parallax-content"><h3>Effective Study Tips</h3><button class="resource-btn" onclick="window.location.href='404.html'">Read More →</button></div></div>
+                    <div class="parallax-card"><div class="parallax-image"><img src="ed13.webp" alt="Exam"></div><div class="parallax-content"><h3>Exam Preparation</h3><button class="resource-btn" onclick="window.location.href='404.html'">Read More →</button></div></div>
+                    <div class="parallax-card"><div class="parallax-image"><img src="ed14.webp" alt="Skills"></div><div class="parallax-content"><h3>Top Skills 2026</h3><button class="resource-btn" onclick="window.location.href='404.html'">Read More →</button></div></div>
+                </div>
+            </section>
+
+            <!-- SECTION 10: SPLIT SCREEN -->
+            <section>
+                <div class="section-header" data-aos="fade-down"><h2>Two Paths, One Platform</h2><p>Choose your role and get started</p></div>
+                <div class="split-container">
+                    <div class="split-item left"><div class="split-overlay"><h3>For Learners</h3><p>Master new skills with expert-led courses</p><button class="primary-btn" onclick="window.location.href='404.html'">Start Learning</button></div></div>
+                    <div class="split-item right"><div class="split-overlay"><h3>For Educators</h3><p>Share your knowledge and teach online</p><button class="primary-btn" onclick="window.location.href='404.html'">Become an Instructor</button></div></div>
+                </div>
+            </section>
+
+            <!-- SECTION 11: HEXAGON CATEGORIES -->
+            <section>
+                <div class="section-header" data-aos="fade-down"><h2>Popular Categories</h2><p>Explore courses by category</p></div>
+                <div class="hexagon-container">
+                    <div class="hex-card"><i class="fas fa-code"></i><h4>Development</h4><p>180+ courses</p></div>
+                    <div class="hex-card"><i class="fas fa-chart-line"></i><h4>Business</h4><p>120+ courses</p></div>
+                    <div class="hex-card"><i class="fas fa-palette"></i><h4>Design</h4><p>90+ courses</p></div>
+                    <div class="hex-card"><i class="fas fa-chart-simple"></i><h4>Data Science</h4><p>75+ courses</p></div>
+                    <div class="hex-card"><i class="fas fa-bullhorn"></i><h4>Marketing</h4><p>85+ courses</p></div>
+                    <div class="hex-card"><i class="fas fa-brain"></i><h4>AI & ML</h4><p>60+ courses</p></div>
+                </div>
+            </section>
+
+            <!-- SECTION 12: CAROUSEL TESTIMONIALS -->
+            <section>
+                <div class="section-header" data-aos="fade-down"><h2>What Our Students Say</h2><p>Success stories from learners like you</p></div>
+                <div class="carousel-wrapper"><div class="carousel-track">
+                    <div class="carousel-card"><i class="fas fa-quote-left"></i><p>"The AI course recommendations helped me find the perfect learning path!"</p><h4>- Rahul S.</h4><small>Software Engineer</small></div>
+                    <div class="carousel-card"><i class="fas fa-quote-left"></i><p>"The interactive platform and expert mentors made learning so engaging!"</p><h4>- Priya P.</h4><small>Product Manager</small></div>
+                    <div class="carousel-card"><i class="fas fa-quote-left"></i><p>"Best investment in my career. The certificates are recognized worldwide!"</p><h4>- Amit K.</h4><small>UX Designer</small></div>
+                    <div class="carousel-card"><i class="fas fa-quote-left"></i><p>"Amazing experience! Got hired at Microsoft after completing Data Science!"</p><h4>- Neha M.</h4><small>Data Scientist</small></div>
+                </div></div>
+            </section>
+
+            <!-- SECTION 13: ACCELERATOR -->
+            <section>
+                <div class="section-header" data-aos="fade-down"><h2>Learning Accelerator</h2><p>Tools to boost your learning journey</p></div>
+                <div class="resource-grid">
+                    <div class="resource-card"><i class="fas fa-graduation-cap"></i><h3>Smart Dashboard</h3><p>Track progress and get recommendations</p><button class="resource-btn" onclick="window.location.href='404.html'">Try now →</button></div>
+                    <div class="resource-card"><i class="fas fa-chart-line"></i><h3>Skill Insights</h3><p>Know your skill gaps</p><button class="resource-btn" onclick="window.location.href='404.html'">Check →</button></div>
+                    <div class="resource-card"><i class="fas fa-bell"></i><h3>Learning Reminders</h3><p>Never miss a deadline</p><button class="resource-btn" onclick="window.location.href='404.html'">Get started →</button></div>
+                </div>
+            </section>
+
+            <!-- SECTION 14: CTA ANIMATED -->
+            <section class="cta-animated" data-aos="zoom-in">
+                <h2>Ready to Start Your Learning Journey?</h2>
+                <p>Join 50,000+ students who transformed their careers</p>
+                <div class="cta-buttons">
+                    <button class="cta-light" onclick="window.location.href='404.html'">Create Free Account</button>
+                    <button class="cta-dark" onclick="window.location.href='404.html'">Browse Courses</button>
+                </div>
+            </section>
+
+            <!-- SECTION 15: ACCREDITATION -->
+            <section class="accreditation-section" data-aos="fade-up">
+                <i class="fas fa-award" style="font-size: 48px; color: #ffc857; margin-bottom: 20px; display: inline-block;"></i>
+                <h3 style="color: #0a2b3e; margin-bottom: 10px;">Accredited & Recognized</h3>
+                <p>Accredited Member — International Education Council. Globally recognized certificates.</p>
+                <button class="primary-btn" style="margin-top: 20px;" onclick="window.location.href='404.html'">Learn More →</button>
+            </section>
+
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        function showTab(event, tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Header menu initialization function
+        function initHeaderMenu() {
+            setTimeout(() => {
+                const hamburger = document.getElementById('hamburgerBtn');
+                const fullscreenMenu = document.getElementById('fullscreenMenu');
+                const closeBtn = document.getElementById('closeMenuBtn');
+                if (hamburger && fullscreenMenu) {
+                    const newHamburger = hamburger.cloneNode(true);
+                    hamburger.parentNode.replaceChild(newHamburger, hamburger);
+                    const newHamburgerBtn = document.getElementById('hamburgerBtn');
+                    const openMenu = (e) => { e.stopPropagation(); fullscreenMenu.classList.add('active'); document.body.style.overflow = 'hidden'; };
+                    const closeMenu = () => { fullscreenMenu.classList.remove('active'); document.body.style.overflow = ''; };
+                    if (newHamburgerBtn) newHamburgerBtn.addEventListener('click', openMenu);
+                    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+                    document.querySelectorAll('.mobile-nav-links a, .mobile-actions a').forEach(link => { link.addEventListener('click', closeMenu); });
+                    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && fullscreenMenu.classList.contains('active')) closeMenu(); });
+                }
+            }, 100);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => { 
+                    document.getElementById('header-placeholder').innerHTML = data; 
+                    initHeaderMenu();
+                })
+                .catch(error => { console.warn('Header not loaded'); });
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => { document.getElementById('footer-placeholder').innerHTML = data; })
+                .catch(error => { console.warn('Footer not loaded'); });
+        });
+
+        const aosScript = document.createElement('script');
+        aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+        document.head.appendChild(aosScript);
+        aosScript.onload = function() {
+            AOS.init({ duration: 1000, once: false, mirror: true, offset: 50, easing: 'ease-in-out' });
+        };
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { backToTop.classList.toggle('show', window.scrollY > 500); });
+        backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        document.querySelectorAll('.video-card').forEach(card => {
+            const video = card.querySelector('video');
+            const playBtn = card.querySelector('.video-play');
+            const overlay = card.querySelector('.video-overlay');
+            const videoBtn = card.querySelector('.video-btn');
+            if (!video || !playBtn || !overlay || !videoBtn) return;
+            videoBtn.removeAttribute('onclick');
+            const playHandler = () => { if (video.paused) { video.play(); overlay.style.opacity = '0'; } else { video.pause(); overlay.style.opacity = '1'; } };
+            playBtn.addEventListener('click', playHandler);
+            videoBtn.addEventListener('click', playHandler);
+            video.addEventListener('click', (e) => { e.stopPropagation(); if (video.paused) { video.play(); overlay.style.opacity = '0'; } else { video.pause(); overlay.style.opacity = '1'; } });
+            video.addEventListener('ended', () => { overlay.style.opacity = '1'; });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Education | Header</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: radial-gradient(circle at 10% 20%, rgba(255,200,100,0.08), rgba(10,43,62,0.02)), 
+                        linear-gradient(135deg, #f0f4fa 0%, #e6edf5 100%);
+            min-height: 200vh;
+        }
+
+        /* ========== FIXED HEADER WITH GLASS EFFECT & SCROLL ANIMATION ========== */
+        .glass-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10000;
+            background: rgba(10, 43, 62, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            border-bottom: 1px solid rgba(255, 200, 87, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        /* Scroll effect - becomes more solid when scrolling */
+        .glass-header.scrolled {
+            background: rgba(10, 43, 62, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 2px solid #ffc857;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.9rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.2rem;
+        }
+
+        /* ===== LOGO AREA ===== */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.85;
+        }
+
+        /* Logo size: minimum 100px height on desktop */
+        .logo-img {
+            height: 100px;
+            min-height: 100px;
+            width: auto;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 800;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: linear-gradient(120deg, #FFE6B0, #FFC857);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* ===== DESKTOP NAVIGATION ===== */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            padding: 0.7rem 1.3rem;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            color: #FEF9E6;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+        }
+
+        .nav-btn:hover {
+            color: #ffc857;
+            background: transparent;
+            text-shadow: 0 0 6px rgba(255,200,87,0.5);
+        }
+
+        .nav-btn:active {
+            transform: translateY(1px);
+        }
+
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #ffc857;
+            transition: all 0.25s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-btn:hover::after {
+            width: 70%;
+        }
+
+        /* ===== RIGHT SIDE AUTH BUTTONS ===== */
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+
+        .login-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(255, 200, 87, 0.7);
+            padding: 0.55rem 1.4rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.25s;
+            color: #FFE6B0;
+            text-decoration: none;
+            display: inline-block;
+            backdrop-filter: blur(4px);
+        }
+
+        .login-btn:hover {
+            background: #ffc857;
+            color: #0a2b3e;
+            border-color: #ffc857;
+            transform: translateY(-1px);
+        }
+
+        .getstarted-btn {
+            background: #ffc857;
+            border: none;
+            padding: 0.6rem 1.6rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: all 0.25s;
+            color: #0a2b3e;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .getstarted-btn:hover {
+            background: #ffd966;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(255,200,87,0.3);
+        }
+
+        /* ========== HAMBURGER MENU (Mobile) ========== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: #ffc857;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ========== FULLSCREEN MOBILE MENU ========== */
+        .fullscreen-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(10, 43, 62, 0.98);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            z-index: 20000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            visibility: hidden;
+        }
+
+        .fullscreen-menu.active {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            background: transparent;
+            border: none;
+            color: #ffc857;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .close-menu:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 80%;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        .mobile-nav-links a {
+            text-decoration: none;
+            font-size: 1.6rem;
+            font-weight: 700;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            color: #fff3df;
+            transition: all 0.2s;
+            background: transparent;
+            padding: 0.5rem;
+            display: block;
+            border-bottom: 1px solid rgba(255, 200, 87, 0.2);
+        }
+
+        .mobile-nav-links a:hover {
+            color: #ffc857;
+            padding-left: 1rem;
+        }
+
+        .mobile-actions {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .mobile-actions .mobile-login {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid #ffc857;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            color: #FFE6B0;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+
+        .mobile-actions .mobile-login:hover {
+            background: #ffc857;
+            color: #0a2b3e;
+        }
+
+        .mobile-actions .mobile-getstarted {
+            background: #ffc857;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            color: #0a2b3e;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+
+        .mobile-actions .mobile-getstarted:hover {
+            background: #ffd966;
+            transform: translateY(-2px);
+        }
+
+        /* ===== MAIN CONTENT OFFSET ===== */
+        main {
+            margin-top: 85px;
+        }
+
+        /* Demo content */
+        .hero-section {
+            max-width: 1200px;
+            margin: 1rem auto;
+            padding: 2rem;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            padding: 3rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            border-left: 6px solid #ffc857;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: linear-gradient(125deg, #0f3b52, #e67e22);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        /* ========== RESPONSIVE BREAKPOINTS ========== */
+        @media (max-width: 992px) {
+            .nav-links, .auth-buttons {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .navbar-container {
+                padding: 0.8rem 1.2rem;
+            }
+            .logo-img {
+                height: 90px;
+                min-height: 90px;
+            }
+            main {
+                margin-top: 75px;
+            }
+        }
+
+        /* Mobile view - INCREASED LOGO SIZE */
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 100px !important;
+                min-height: 100px !important;
+            }
+            .navbar-container {
+                padding: 0.7rem 1rem;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .navbar-container {
+                padding: 0.7rem 1rem;
+            }
+            .hero-card {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                margin-top: 70px;
+            }
+            .logo-img {
+                height: 110px !important;
+                min-height: 110px !important;
+            }
+            .mobile-nav-links a {
+                font-size: 1.3rem;
+            }
+            .mobile-actions .mobile-login,
+            .mobile-actions .mobile-getstarted {
+                padding: 0.6rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-img {
+                height: 105px !important;
+                min-height: 105px !important;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .mobile-actions {
+                flex-direction: column;
+                width: 80%;
+            }
+            .logo-img {
+                height: 100px !important;
+                min-height: 100px !important;
+            }
+        }
+
+        /* Extra small devices - logo remains large */
+        @media (max-width: 360px) {
+            .logo-img {
+                height: 95px !important;
+                min-height: 95px !important;
+            }
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        img, iframe, .hero-card {
+            max-width: 100%;
+        }
+
+        button, .nav-btn, .login-btn, .getstarted-btn {
+            cursor: pointer;
+        }
+
+        .nav-btn, .login-btn, .getstarted-btn, .mobile-login, .mobile-getstarted, .close-menu, .hamburger, .fullscreen-menu {
+            border-radius: 0px !important;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== GLASS FIXED HEADER WITH SCROLL EFFECT ========== -->
+<header class="glass-header" id="cyberHeader">
+    <div class="navbar-container">
+        <div class="logo-area">
+            <a href="index.html" class="logo-link">
+                <img src="logo2.webp" alt="Stackly Logo" class="logo-img" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27150%27 height=%27100%27 viewBox=%270 0 150 100%27%3E%3Crect width=%27150%27 height=%27100%27 fill=%27%23ffc857%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 font-size=%2736%27 fill=%27%230a2b3e%27 font-weight=%27bold%27%3ES%3C/text%3E%3C/svg%3E';">
+            </a>
+        </div>
+
+        <div class="nav-links">
+            <a href="home.html" class="nav-btn">🏠 Home</a>
+            <a href="programs.html" class="nav-btn">📚 Programs</a>
+            <a href="resources.html" class="nav-btn">📖 Resources</a>
+            <a href="campus-life.html" class="nav-btn">🏫 Campus Life</a>
+            <a href="student-portal.html" class="nav-btn">🔐 Student Portal</a>
+        </div>
+
+        <div class="auth-buttons">
+            <a href="login.html" class="login-btn">Log in</a>
+            <a href="signup.html" class="getstarted-btn">Get Started</a>
+        </div>
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ========== FULLSCREEN MOBILE MENU ========== -->
+<div class="fullscreen-menu" id="fullscreenMenu">
+    <button class="close-menu" id="closeMenuBtn" aria-label="Close">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <div class="mobile-nav-links">
+        <a href="home.html">🏠 Home</a>
+        <a href="programs.html">📚 Programs</a>
+        <a href="resources.html">📖 Resources</a>
+        <a href="campus-life.html">🏫 Campus Life</a>
+        <a href="student-portal.html">🔐 Student Portal</a>
+    </div>
+
+    <div class="mobile-actions">
+        <a href="login.html" class="mobile-login">Log in</a>
+        <a href="signup.html" class="mobile-getstarted">Get Started</a>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ===== SCROLL EFFECT - Header becomes more solid on scroll =====
+        const header = document.getElementById('cyberHeader');
+        
+        function handleScroll() {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+        
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        // ===== FULLSCREEN MOBILE MENU FUNCTIONALITY =====
+        const hamburger = document.getElementById('hamburgerBtn');
+        const fullscreenMenu = document.getElementById('fullscreenMenu');
+        const closeBtn = document.getElementById('closeMenuBtn');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                fullscreenMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        function closeMenu() {
+            fullscreenMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeMenu);
+        }
+
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && fullscreenMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        document.querySelectorAll('.mobile-nav-links a, .mobile-actions a').forEach(link => {
+            link.addEventListener('click', function() {
+                closeMenu();
+            });
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 860 && fullscreenMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Prevent horizontal scroll
+        const setOverflowHidden = () => {
+            document.documentElement.style.overflowX = 'hidden';
+            document.body.style.overflowX = 'hidden';
+        };
+        setOverflowHidden();
+        window.addEventListener('resize', setOverflowHidden);
+
+        console.log("✅ Stackly Education Header - Scroll effect active | Logo size increased on mobile");
+    })();
+</script>
+
+<!-- Additional styles for scroll effect -->
+<style>
+    .glass-header {
+        background: rgba(10, 43, 62, 0.72);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        transition: all 0.3s ease;
+    }
+    
+    .glass-header.scrolled {
+        background: rgba(10, 43, 62, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 2px solid #ffc857;
+    }
+    
+    .fullscreen-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(10, 43, 62, 0.98);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        z-index: 20000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        visibility: hidden;
+    }
+    
+    .fullscreen-menu.active {
+        transform: translateX(0);
+        visibility: visible;
+    }
+    
+    .nav-btn:hover {
+        background: transparent !important;
+        color: #ffc857 !important;
+    }
+    
+    .mobile-nav-btn:hover {
+        background: transparent !important;
+        color: #ffc857 !important;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .navbar-container {
+        min-height: 120px;
+    }
+    
+    @media (max-width: 860px) {
+        .navbar-container {
+            min-height: auto;
+        }
+    }
+</style>
+
+</body>
+</html>

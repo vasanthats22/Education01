@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Education - Student Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f3ff;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        main {
+            padding-top: 10px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+        }
+
+        section {
+            margin: 80px 0;
+            position: relative;
+            width: 100%;
+            clear: both;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #0a2b3e;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #ffc857;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Button Styles */
+        .btn-primary, .btn-outline, .btn-card, .btn-login {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #ffc857;
+            color: #0a2b3e;
+        }
+        .btn-primary:hover {
+            background: #e6a017;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ffc857;
+            color: #ffc857;
+        }
+        .btn-outline:hover {
+            background: #ffc857;
+            color: #0a2b3e;
+            transform: translateY(-3px);
+        }
+
+        .btn-card {
+            background: #ffc857;
+            color: #0a2b3e;
+            padding: 10px 24px;
+        }
+        .btn-card:hover {
+            background: #e6a017;
+            transform: translateX(5px);
+        }
+
+        .btn-login {
+            background: #0a2b3e;
+            color: white;
+            padding: 14px 40px;
+            font-size: 18px;
+        }
+        .btn-login:hover {
+            background: #ffc857;
+            color: #0a2b3e;
+            transform: translateY(-3px);
+        }
+
+        /* ===== SECTION 1: HERO WITH LOGIN CARD & BG IMAGE ===== */
+        .hero-portal {
+            background: linear-gradient(135deg, #0a2b3e 0%, #1a4a6e 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            min-height: 580px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 600px;
+        }
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 15px;
+        }
+        .hero-content h1 span {
+            color: #ffc857;
+        }
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            text-align: left;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #0a2b3e;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .input-group input:focus {
+            border-color: #ffc857;
+            box-shadow: 0 0 0 3px rgba(255,200,87,0.2);
+        }
+        .error-message {
+            color: #dc2626;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* ===== SECTION 2: QUICK ACCESS DASHBOARD ===== */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .dashboard-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .dashboard-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(255,200,87,0.15);
+        }
+        .dashboard-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        /* ===== SECTION 3: PROGRESS TRACKER WITH IMAGE ===== */
+        .progress-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .progress-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .progress-stats-img {
+            width: 100%;
+            max-width: 250px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+        .progress-item {
+            margin-bottom: 25px;
+        }
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .progress-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #ffc857;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1s ease;
+        }
+        .overall-score {
+            font-size: 64px;
+            font-weight: 800;
+            color: #ffc857;
+        }
+
+        /* ===== SECTION 4: COURSE SCHEDULE ===== */
+        .schedule-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .schedule-header {
+            display: grid;
+            grid-template-columns: 100px 1fr 100px 120px;
+            background: #0a2b3e;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        .schedule-row {
+            display: grid;
+            grid-template-columns: 100px 1fr 100px 120px;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        .schedule-row:hover {
+            background: #ffc85710;
+            transform: translateX(5px);
+        }
+
+        /* ===== SECTION 5: ASSIGNMENTS ===== */
+        .assignments-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        .assignment-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s;
+            border-left: 4px solid #ffc857;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .assignment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+        .assignment-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        .assignment-content {
+            flex: 1;
+        }
+        .assignment-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .status-pending {
+            background: #ffc85720;
+            color: #e6a017;
+        }
+        .status-submitted {
+            background: #22c55e20;
+            color: #16a34a;
+        }
+
+        /* ===== SECTION 6: GRADES OVERVIEW ===== */
+        .grades-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .grade-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .grade-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+        .grade-img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin: 0 auto 15px;
+        }
+        .grade-letter {
+            font-size: 48px;
+            font-weight: 800;
+            color: #ffc857;
+            margin-bottom: 10px;
+        }
+
+        /* ===== SECTION 7: VIDEO LECTURES ===== */
+        .lectures-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .lecture-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .lecture-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .lecture-thumb {
+            position: relative;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        .lecture-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: #ffc857;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .lecture-play:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .lecture-info {
+            padding: 18px;
+        }
+
+        /* ===== SECTION 8: NOTIFICATIONS ===== */
+        .notifications-list {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .notification-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px 25px;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .notification-item:hover {
+            background: #ffc85708;
+            transform: translateX(8px);
+        }
+        .notification-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* ===== SECTION 9: MESSAGING PREVIEW ===== */
+        .messaging-preview {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .message-item {
+            display: flex;
+            gap: 15px;
+            padding: 20px 25px;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            align-items: center;
+        }
+        .message-item:hover {
+            background: #ffc85708;
+        }
+        .message-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .message-content {
+            flex: 1;
+        }
+        .message-sender {
+            font-weight: 700;
+            color: #0a2b3e;
+        }
+
+        /* ===== SECTION 10: QUICK SUPPORT ===== */
+        .support-section {
+            background: linear-gradient(135deg, #0a2b3e, #1a4a6e);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            color: white;
+        }
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .support-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+        .support-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+        .support-img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin: 0 auto 15px;
+            display: block;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #ffc857;
+            color: #0a2b3e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-5px); background: #e6a017; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .dashboard-grid, .grades-grid, .lectures-grid, .support-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .progress-grid, .assignments-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 { font-size: 38px; }
+        }
+
+        @media (max-width: 768px) {
+            main { padding-top: 80px; }
+            .container { padding: 0 20px; }
+            section { margin: 50px 0; }
+            .section-header h2 { font-size: 32px; }
+            .dashboard-grid, .grades-grid, .lectures-grid, .support-grid {
+                grid-template-columns: 1fr;
+            }
+            .schedule-header, .schedule-row {
+                grid-template-columns: 80px 1fr;
+                gap: 10px;
+            }
+            .schedule-header span:last-child, .schedule-row span:last-child {
+                display: none;
+            }
+            .hero-content { padding: 30px 20px; }
+            .hero-content h1 { font-size: 28px; }
+            .login-card { padding: 25px; }
+            .assignment-card { flex-direction: column; text-align: center; }
+            .support-section { padding: 30px 20px; }
+            .message-item { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 15px; }
+            .section-header h2 { font-size: 28px; }
+        }
+
+        [data-aos] {
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+        [data-aos="fade-up"] { transform: translateY(50px); }
+        [data-aos="fade-left"] { transform: translateX(-50px); }
+        [data-aos="fade-right"] { transform: translateX(50px); }
+        [data-aos="zoom-in"] { transform: scale(0.9); }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="container">
+
+            <!-- SECTION 1: HERO WITH LOGIN CARD & BG IMAGE -->
+            <section class="hero-portal" data-aos="fade-up">
+                <img src="eds1.webp" alt="Campus Background" class="hero-bg">
+                <div class="hero-content">
+                    <h1>Welcome Back, <span>Student</span></h1>
+                    <p style="color: rgba(255,255,255,0.9);">Login to access your dashboard, courses, and resources</p>
+                    <div class="login-card">
+                        <div class="input-group"><label>Student ID / Email</label><input type="text" placeholder="Enter your student ID or email" id="loginEmail"></div>
+                        <div class="input-group"><label>Password</label><input type="password" placeholder="Enter your password" id="loginPassword"></div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                            <a href="#" id="loginBtn" class="btn-login">Login to Portal →</a>
+                            <a href="404.html" style="color: #ffc857;">Forgot Password?</a>
+                        </div>
+                        <div id="loginError" class="error-message">⚠️ Please enter both email and password</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: QUICK ACCESS DASHBOARD WITH IMAGES -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Quick Access</h2>
+                    <p>Your dashboard at a glance</p>
+                </div>
+                <div class="dashboard-grid">
+                    <div class="dashboard-card"><img src="eds2.webp" alt="Courses" class="dashboard-img"><h3>My Courses</h3><p>5 Active Courses</p><a href="404.html" class="btn-card" style="margin-top: 15px;">View →</a></div>
+                    <div class="dashboard-card"><img src="eds3.webp" alt="Assignments" class="dashboard-img"><h3>Assignments</h3><p>3 Pending</p><a href="404.html" class="btn-card" style="margin-top: 15px;">Submit →</a></div>
+                    <div class="dashboard-card"><img src="eds4.webp" alt="Grades" class="dashboard-img"><h3>Grades</h3><p>GPA: 3.8</p><a href="404.html" class="btn-card" style="margin-top: 15px;">View →</a></div>
+                    <div class="dashboard-card"><img src="ed5.webp" alt="Schedule" class="dashboard-img"><h3>Schedule</h3><p>Next: AI Class</p><a href="404.html" class="btn-card" style="margin-top: 15px;">View →</a></div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: PROGRESS TRACKER WITH IMAGE -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Your Progress</h2>
+                    <p>Track your learning journey</p>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-grid">
+                        <div>
+                            <div class="progress-item"><div class="progress-label"><span>Data Science</span><span>75%</span></div><div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div></div>
+                            <div class="progress-item"><div class="progress-label"><span>Web Development</span><span>60%</span></div><div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div></div>
+                            <div class="progress-item"><div class="progress-label"><span>Business Analytics</span><span>45%</span></div><div class="progress-bar"><div class="progress-fill" style="width: 45%;"></div></div></div>
+                            <div class="progress-item"><div class="progress-label"><span>AI Fundamentals</span><span>30%</span></div><div class="progress-bar"><div class="progress-fill" style="width: 30%;"></div></div></div>
+                        </div>
+                        <div class="progress-stats">
+                            <img src="eds1.webp" alt="Progress" class="progress-stats-img">
+                            <div class="overall-score">85%</div>
+                            <p>Overall Completion</p>
+                            <a href="404.html" class="btn-primary" style="margin-top: 20px;">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: COURSE SCHEDULE -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Weekly Schedule</h2>
+                    <p>Your class timetable</p>
+                </div>
+                <div class="schedule-table">
+                    <div class="schedule-header"><span>Time</span><span>Course</span><span>Room</span><span>Instructor</span></div>
+                    <div class="schedule-row"><span>09:00 AM</span><span>Data Science</span><span>Hall A</span><span>Dr. Smith</span></div>
+                    <div class="schedule-row"><span>11:00 AM</span><span>Web Development</span><span>Lab 3</span><span>Prof. Johnson</span></div>
+                    <div class="schedule-row"><span>02:00 PM</span><span>AI Fundamentals</span><span>Hall B</span><span>Dr. Williams</span></div>
+                    <div class="schedule-row"><span>04:00 PM</span><span>Study Group</span><span>Library</span><span>Peer Mentor</span></div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: ASSIGNMENTS WITH IMAGES -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Upcoming Assignments</h2>
+                    <p>Don't miss your deadlines</p>
+                </div>
+                <div class="assignments-grid">
+                    <div class="assignment-card"><img src="ed18.webp" alt="Assignment" class="assignment-img"><div class="assignment-content"><h3>Data Science Project</h3><p>Build a predictive model using Python</p><div class="assignment-status status-pending">Due: Mar 25, 2026</div><a href="404.html" class="btn-card" style="margin-top: 12px;">Submit →</a></div></div>
+                    <div class="assignment-card"><img src="ed17.webp" alt="Assignment" class="assignment-img"><div class="assignment-content"><h3>Web Dev Final</h3><p>Full-stack application with React</p><div class="assignment-status status-pending">Due: Apr 02, 2026</div><a href="404.html" class="btn-card" style="margin-top: 12px;">Submit →</a></div></div>
+                    <div class="assignment-card"><img src="ed16.webp" alt="Assignment" class="assignment-img"><div class="assignment-content"><h3>Business Case Study</h3><p>Analyze market trends</p><div class="assignment-status status-submitted">Submitted ✓</div><a href="404.html" class="btn-card" style="margin-top: 12px;">View →</a></div></div>
+                    <div class="assignment-card"><img src="ed15.webp" alt="Assignment" class="assignment-img"><div class="assignment-content"><h3>AI Ethics Essay</h3><p>1500 words on AI ethics</p><div class="assignment-status status-pending">Due: Apr 10, 2026</div><a href="404.html" class="btn-card" style="margin-top: 12px;">Submit →</a></div></div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: GRADES OVERVIEW WITH IMAGES -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Your Grades</h2>
+                    <p>Current semester performance</p>
+                </div>
+                <div class="grades-grid">
+                    <div class="grade-card"><img src="ed14.webp" alt="Grade" class="grade-img"><div class="grade-letter">A</div><div class="grade-percent">92%</div><h3>Data Science</h3><a href="404.html" class="btn-outline" style="margin-top: 15px;">Details →</a></div>
+                    <div class="grade-card"><img src="ed13.webp" alt="Grade" class="grade-img"><div class="grade-letter">B+</div><div class="grade-percent">88%</div><h3>Web Development</h3><a href="404.html" class="btn-outline" style="margin-top: 15px;">Details →</a></div>
+                    <div class="grade-card"><img src="ed12.webp" alt="Grade" class="grade-img"><div class="grade-letter">A-</div><div class="grade-percent">90%</div><h3>Business Analytics</h3><a href="404.html" class="btn-outline" style="margin-top: 15px;">Details →</a></div>
+                </div>
+            </section>
+
+                        <!-- SECTION 7: VIDEO LECTURES (No fake buttons - just clean design) -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Recent Lectures</h2>
+                    <p>Catch up on missed classes</p>
+                </div>
+                <div class="lectures-grid">
+                    <div class="lecture-card">
+                        <div class="lecture-thumb" style="background-image: url('ed12.webp')"></div>
+                        <div class="lecture-info">
+                            <h3>Data Science: Week 8</h3>
+                            <p>Machine Learning Basics</p>
+                            <span style="color:#ffc857;">45 min</span>
+                            <a href="404.html" class="btn-card" style="margin-top: 10px; display: inline-block;">Watch →</a>
+                        </div>
+                    </div>
+                    <div class="lecture-card">
+                        <div class="lecture-thumb" style="background-image: url('ed17.webp')"></div>
+                        <div class="lecture-info">
+                            <h3>Web Dev: React Hooks</h3>
+                            <p>Advanced React Concepts</p>
+                            <span style="color:#ffc857;">52 min</span>
+                            <a href="404.html" class="btn-card" style="margin-top: 10px; display: inline-block;">Watch →</a>
+                        </div>
+                    </div>
+                    <div class="lecture-card">
+                        <div class="lecture-thumb" style="background-image: url('ed14.webp')"></div>
+                        <div class="lecture-info">
+                            <h3>AI: Neural Networks</h3>
+                            <p>Deep Learning Introduction</p>
+                            <span style="color:#ffc857;">60 min</span>
+                            <a href="404.html" class="btn-card" style="margin-top: 10px; display: inline-block;">Watch →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: NOTIFICATIONS WITH IMAGES -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Notifications</h2>
+                    <p>Stay updated</p>
+                </div>
+                <div class="notifications-list">
+                    <div class="notification-item"><img src="ed1.webp" alt="Notification" class="notification-img"><div><h3>New Assignment Posted</h3><p>Data Science Project deadline extended to Mar 28</p><span style="color:#64748b; font-size:12px;">2 hours ago</span></div></div>
+                    <div class="notification-item"><img src="ed2.webp" alt="Notification" class="notification-img"><div><h3>Workshop Tomorrow</h3><p>Guest Lecture on AI Ethics at 10 AM</p><span style="color:#64748b; font-size:12px;">Yesterday</span></div></div>
+                    <div class="notification-item"><img src="ed3.webp" alt="Notification" class="notification-img"><div><h3>Assignment Graded</h3><p>Your Web Dev assignment has been graded: 92%</p><span style="color:#64748b; font-size:12px;">2 days ago</span></div></div>
+                </div>
+            </section>
+
+            <!-- SECTION 9: MESSAGING PREVIEW WITH AVATARS -->
+            <section data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Recent Messages</h2>
+                    <p>Connect with instructors and peers</p>
+                </div>
+                <div class="messaging-preview">
+                    <div class="message-item"><img src="ed4.webp" class="message-avatar"><div class="message-content"><div class="message-sender">Prof. Johnson</div><p>Your project presentation is scheduled for Friday...</p><span style="color:#64748b; font-size:12px;">1 hour ago</span></div><a href="404.html" style="color:#ffc857;">Reply →</a></div>
+                    <div class="message-item"><img src="ed5.webp" class="message-avatar"><div class="message-content"><div class="message-sender">Study Group</div><p>Meeting today at 4 PM in the library</p><span style="color:#64748b; font-size:12px;">3 hours ago</span></div><a href="404.html" style="color:#ffc857;">Reply →</a></div>
+                    <div class="message-item"><img src="ed6.webp" class="message-avatar"><div class="message-content"><div class="message-sender">Dr. Williams</div><p>Please review the AI course materials before next class</p><span style="color:#64748b; font-size:12px;">Yesterday</span></div><a href="404.html" style="color:#ffc857;">Reply →</a></div>
+                </div>
+                <div style="text-align: center; padding: 20px;"><a href="404.html" class="btn-outline">View All Messages →</a></div>
+            </section>
+
+            <!-- SECTION 10: QUICK SUPPORT WITH IMAGES -->
+            <section class="support-section" data-aos="zoom-in">
+                <h2>Need Help?</h2>
+                <p>Get support anytime, anywhere</p>
+                <div class="support-grid">
+                    <div class="support-item"><img src="ed7.webp" alt="Support" class="support-img"><h3>24/7 Support</h3><p>Chat with our team</p><a href="404.html" class="btn-primary" style="margin-top: 15px; background: #ffc857; color:#0a2b3e;">Contact →</a></div>
+                    <div class="support-item"><img src="ed8.webp" alt="Resources" class="support-img"><h3>Resources Hub</h3><p>Study materials & guides</p><a href="404.html" class="btn-primary" style="margin-top: 15px; background: #ffc857; color:#0a2b3e;">Browse →</a></div>
+                    <div class="support-item"><img src="ed9.webp" alt="FAQ" class="support-img"><h3>FAQ</h3><p>Common questions answered</p><a href="404.html" class="btn-primary" style="margin-top: 15px; background: #ffc857; color:#0a2b3e;">Read FAQ →</a></div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: false, mirror: true, offset: 50 });
+
+        // Login Validation
+        const loginBtn = document.getElementById('loginBtn');
+        const loginEmail = document.getElementById('loginEmail');
+        const loginPassword = document.getElementById('loginPassword');
+        const loginError = document.getElementById('loginError');
+
+        if (loginBtn) {
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const email = loginEmail.value.trim();
+                const password = loginPassword.value.trim();
+                if (email === '' || password === '') {
+                    loginError.style.display = 'block';
+                } else {
+                    loginError.style.display = 'none';
+                    window.location.href = '404.html';
+                }
+            });
+        }
+
+        // Header Menu Init
+        function initHeaderMenu() {
+            setTimeout(() => {
+                const hamburger = document.getElementById('hamburgerBtn');
+                const fullscreenMenu = document.getElementById('fullscreenMenu');
+                const closeBtn = document.getElementById('closeMenuBtn');
+                if (hamburger && fullscreenMenu) {
+                    const newHamburger = hamburger.cloneNode(true);
+                    hamburger.parentNode.replaceChild(newHamburger, hamburger);
+                    const newHamburgerBtn = document.getElementById('hamburgerBtn');
+                    const openMenu = (e) => { e.stopPropagation(); fullscreenMenu.classList.add('active'); document.body.style.overflow = 'hidden'; };
+                    const closeMenu = () => { fullscreenMenu.classList.remove('active'); document.body.style.overflow = ''; };
+                    if (newHamburgerBtn) newHamburgerBtn.addEventListener('click', openMenu);
+                    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+                    document.querySelectorAll('.mobile-nav-links a, .mobile-actions a').forEach(link => { link.addEventListener('click', closeMenu); });
+                    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && fullscreenMenu.classList.contains('active')) closeMenu(); });
+                }
+            }, 100);
+        }
+
+        // Load Header and Footer
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('header.html').then(res => res.text()).then(data => { document.getElementById('header-placeholder').innerHTML = data; initHeaderMenu(); }).catch(() => { document.getElementById('header-placeholder').innerHTML = '<div style="background:#0a2b3e; color:white; padding:20px; text-align:center;">Header Not Found</div>'; });
+            fetch('footer.html').then(res => res.text()).then(data => { document.getElementById('footer-placeholder').innerHTML = data; }).catch(() => { document.getElementById('footer-placeholder').innerHTML = '<div style="background:#0a2b3e; color:white; padding:40px; text-align:center;">Footer Not Found</div>'; });
+        });
+
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { backToTop.classList.toggle('show', window.scrollY > 500); });
+        backToTop.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    </script>
+</body>
+</html>

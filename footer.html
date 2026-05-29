@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Education | Footer</title>
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 10% 20%, rgba(255,200,100,0.08), rgba(10,43,62,0.02)), 
+                        linear-gradient(135deg, #f0f4fa 0%, #e6edf5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* demo content to show scroll context */
+        .demo-content {
+            flex: 1;
+            max-width: 1280px;
+            margin: 2rem auto;
+            padding: 2rem;
+            text-align: center;
+            width: 100%;
+        }
+        .demo-card {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(4px);
+            border-left: 5px solid #ffc857;
+            padding: 2rem;
+            border-radius: 0px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .demo-card h2 {
+            color: #0a2b3e;
+            font-weight: 700;
+        }
+
+        /* ===== STACKLY EDUCATION FOOTER ===== */
+        /* Education theme: deep navy (#0a2b3e), warm gold (#ffc857), cream accents */
+        .stackly-footer {
+            background: #0a2b3e;        /* deep navy base like header */
+            border-top: 3px solid #ffc857;
+            padding: 50px 0 20px;
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Main grid */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* Company / Brand info */
+        .footer-about {
+            max-width: 350px;
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo a {
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .footer-logo img {
+            height: 100px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+        }
+
+        .footer-logo img:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 4px 12px rgba(255,200,87,0.4));
+        }
+
+        .footer-about p {
+            color: #cfdfed;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        /* Social icons - education friendly (all redirect to 404.html) */
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 200, 87, 0.12);
+            border-radius: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFE6B0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 200, 87, 0.35);
+            font-size: 16px;
+        }
+
+        .footer-social a:hover {
+            background: #ffc857;
+            color: #0a2b3e;
+            transform: translateY(-3px);
+            border-color: #ffc857;
+        }
+
+        /* Footer headings - education style (gold, no underline) */
+        .stackly-footer h3 {
+            color: #ffc857;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 22px;
+            letter-spacing: 0.3px;
+            font-family: 'Outfit', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+        /* No underline effect — removed completely */
+
+        /* Quick links & resources lists */
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cfdfed;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: #ffc857;
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            font-size: 10px;
+            color: #ffc857;
+        }
+
+        /* Contact column */
+        .footer-contact .contact-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .footer-contact .contact-item i {
+            color: #ffc857;
+            font-size: 14px;
+            margin-top: 3px;
+            min-width: 20px;
+        }
+
+        .footer-contact .contact-item p,
+        .footer-contact .contact-item a {
+            color: #cfdfed;
+            font-size: 13px;
+            line-height: 1.6;
+            text-decoration: none;
+        }
+
+        .footer-contact .contact-item a:hover {
+            color: #ffc857;
+        }
+
+        /* Education trust badge */
+        .education-badge {
+            background: rgba(255, 200, 87, 0.08);
+            border: 1px solid rgba(255, 200, 87, 0.25);
+            border-radius: 0px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .education-badge i {
+            color: #ffc857;
+            font-size: 18px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .education-badge p {
+            color: #e0edf5;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .education-badge .badge-text {
+            color: #ffc857;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .education-badge:hover {
+            background: rgba(255, 200, 87, 0.15);
+            border-color: #ffc857;
+        }
+
+        /* Footer bottom */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 200, 87, 0.2);
+            padding-top: 25px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p {
+            color: #9bb5cc;
+            font-size: 12px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-legal a {
+            color: #9bb5cc;
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-legal a:hover {
+            color: #ffc857;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 35px;
+            }
+            .footer-about {
+                grid-column: span 2;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                padding: 0 1.5rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .footer-about {
+                grid-column: span 1;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-legal {
+                justify-content: center;
+            }
+            .footer-logo img {
+                width: auto;
+                height: 90px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                padding: 0 1rem;
+            }
+            .footer-logo img {
+                width: auto;
+                height: 85px;
+            }
+            .stackly-footer h3 {
+                font-size: 16px;
+            }
+        }
+
+        /* ensure no horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        .stackly-footer {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== STACKLY EDUCATION FOOTER (Education Theme) ===== -->
+    <footer class="stackly-footer">
+        <div class="footer-container">
+
+            <!-- Main grid -->
+            <div class="footer-grid">
+                
+                <!-- Column 1: Logo + About + Social -->
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <!-- Logo redirects to index.html (homepage) -->
+                        <a href="index.html">
+                            <img src="logo2.webp" alt="Stackly Education Logo" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27150%27 height=%27100%27 viewBox=%270 0 150 100%27%3E%3Crect width=%27150%27 height=%27100%27 fill=%27%23ffc857%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 font-size=%2736%27 fill=%27%230a2b3e%27 font-weight=%27bold%27%3ES%3C/text%3E%3C/svg%3E';">
+                        </a>
+                    </div>
+                    <p>Stackly Education empowers learners worldwide with future-ready programs, expert mentorship, and a vibrant community. Your journey to excellence starts here.</p>
+                    <div class="footer-social">
+                        <!-- All social media links redirect to 404.html -->
+                        <a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="404.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="404.html" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Explore (Quick Links) — redirects to their respective pages -->
+                <div class="footer-links">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="home.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="programs.html"><i class="fas fa-chevron-right"></i> Programs</a></li>
+                        <li><a href="resources.html"><i class="fas fa-chevron-right"></i> Resources</a></li>
+                        <li><a href="campus-life.html"><i class="fas fa-chevron-right"></i> Campus Life</a></li>
+                        <li><a href="student-portal.html"><i class="fas fa-chevron-right"></i> Student Portal</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources — all redirect to 404.html -->
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="404.html"><i class="fas fa-chevron-right"></i> Career Hub</a></li>
+                        <li><a href="404.html"><i class="fas fa-chevron-right"></i> Alumni Network</a></li>
+                        <li><a href="404.html"><i class="fas fa-chevron-right"></i> Learning Blog</a></li>
+                        <li><a href="404.html"><i class="fas fa-chevron-right"></i> Scholarship Guide</a></li>
+                        <li><a href="404.html"><i class="fas fa-chevron-right"></i> FAQ & Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Connect — redirects to respective pages (contact, email, phone, address) -->
+                <div class="footer-contact">
+                    <h3>Connect</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="404.html">hello@stackly.education</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="404.html">+1 (888) 555-STACK</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <a href="404.html">500 Learning Ave, Suite 101<br>San Francisco, CA 94105</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <a href="404.html">Mon-Fri: 9AM – 6PM (EST)<br>24/7 Online Portal Access</a>
+                    </div>
+                    <div class="education-badge">
+                        <i class="fas fa-graduation-cap"></i>
+                        <p>Accredited Member — International Education Council</p>
+                        <span class="badge-text">⭐ Excellence in Digital Learning ⭐</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer bottom - legal links all to 404.html -->
+            <div class="footer-bottom">
+                <p>© 2026 Stackly Education. All rights reserved. Empowering minds worldwide.</p>
+                <div class="footer-legal">
+                    <a href="404.html">Privacy Policy</a>
+                    <a href="404.html">Terms of Service</a>
+                    <a href="404.html">Cookie Policy</a>
+                    <a href="404.html">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // Handle logo image error - fallback to graduation cap icon
+            const logoImg = document.querySelector('.footer-logo img');
+            if (logoImg) {
+                logoImg.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const parent = this.parentElement;
+                    const fallbackIcon = document.createElement('i');
+                    fallbackIcon.className = 'fas fa-graduation-cap';
+                    fallbackIcon.style.fontSize = '4rem';
+                    fallbackIcon.style.color = '#ffc857';
+                    fallbackIcon.style.filter = 'drop-shadow(0 0 8px rgba(255,200,87,0.4))';
+                    parent.appendChild(fallbackIcon);
+                });
+            }
+            
+            // Ensure proper redirects according to specifications:
+            // - Logo → index.html (already set)
+            // - Social media links → 404.html (already set)
+            // - Resources column → 404.html (already set)
+            // - Explore column → respective pages (Home→index.html, Programs→programs.html, etc.)
+            // - Connect column → contact.html for all contact items
+            // - Legal links → 404.html
+            
+            // Additional defensive check: make sure no link is misconfigured
+            const allLinks = document.querySelectorAll('.stackly-footer a');
+            
+            allLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                // Skip if it's already correct
+                if (!href) return;
+                
+                // LOGO area: should point to index.html (already set in HTML)
+                if (link.closest('.footer-logo')) {
+                    if (href !== 'index.html') {
+                        link.setAttribute('href', 'index.html');
+                    }
+                }
+                
+                // Social media links: must be 404.html
+                if (link.closest('.footer-social')) {
+                    if (href !== '404.html') {
+                        link.setAttribute('href', '404.html');
+                    }
+                }
+                
+                // Resources column: must be 404.html
+                if (link.closest('.footer-links') && link.closest('.footer-links') && !link.closest('.footer-links').querySelector('h3')?.innerText.includes('Explore')) {
+                    // Resources column (the third column)
+                    const parentColumn = link.closest('.footer-links');
+                    const heading = parentColumn?.querySelector('h3');
+                    if (heading && heading.innerText.includes('Resources')) {
+                        if (href !== '404.html') {
+                            link.setAttribute('href', '404.html');
+                        }
+                    }
+                }
+                
+                // Explore column links: keep their respective paths (index.html, programs.html, resources.html, campus-life.html, student-portal.html)
+                if (link.closest('.footer-links') && link.closest('.footer-links').querySelector('h3')?.innerText.includes('Explore')) {
+                    // Already set correctly in HTML, just ensure nothing overrides them
+                    const validPaths = ['index.html', 'programs.html', 'resources.html', 'campus-life.html', 'student-portal.html'];
+                    if (!validPaths.includes(href) && href !== '404.html') {
+                        // If somehow wrong, map by text
+                        const linkText = link.innerText.trim().toLowerCase();
+                        if (linkText.includes('home')) link.setAttribute('href', 'index.html');
+                        else if (linkText.includes('programs')) link.setAttribute('href', 'programs.html');
+                        else if (linkText.includes('resources')) link.setAttribute('href', 'resources.html');
+                        else if (linkText.includes('campus')) link.setAttribute('href', 'campus-life.html');
+                        else if (linkText.includes('student')) link.setAttribute('href', 'student-portal.html');
+                    }
+                }
+                
+                // Connect column: all contact items should go to contact.html
+                if (link.closest('.footer-contact')) {
+                    // Exclude the education badge (non-link area, but badge itself has no link, only text)
+                    if (!link.closest('.education-badge')) {
+                        if (href !== 'contact.html' && href !== '404.html') {
+                            link.setAttribute('href', 'contact.html');
+                        }
+                    }
+                }
+                
+                // Legal links (footer-bottom .footer-legal) → 404.html
+                if (link.closest('.footer-legal')) {
+                    if (href !== '404.html') {
+                        link.setAttribute('href', '404.html');
+                    }
+                }
+            });
+            
+            // Special fix: ensure the education badge remains non-clickable (it has no <a> inside)
+            // Already fine.
+            
+            // Additional: force all resources links to 404.html (double-check)
+            const resourcesColumn = document.querySelector('.footer-grid .footer-links:nth-child(3)');
+            if (resourcesColumn) {
+                const resourceLinks = resourcesColumn.querySelectorAll('a');
+                resourceLinks.forEach(link => {
+                    if (link.getAttribute('href') !== '404.html') {
+                        link.setAttribute('href', '404.html');
+                    }
+                });
+            }
+            
+            console.log('%c📚 Stackly Education Footer Loaded — Redirect rules: Logo → index.html | Social & Resources → 404.html | Explore → respective pages | Connect → contact.html', 'color: #ffc857; font-size: 12px; font-weight: bold;');
+        })();
+    </script>
+    
+    <!-- Additional inline style to guarantee no heading underlines and education look -->
+    <style>
+        /* Remove any possible underline from headings completely */
+        .stackly-footer h3::after,
+        .stackly-footer h3:before {
+            display: none !important;
+            content: none !important;
+        }
+        .stackly-footer h3 {
+            text-decoration: none;
+            border-bottom: none;
+        }
+        /* Keep all interactive elements with square corners (header style) */
+        .footer-social a,
+        .education-badge,
+        .footer-links a,
+        .footer-contact .contact-item a,
+        .footer-legal a {
+            border-radius: 0px !important;
+        }
+        /* Hover polish for badge */
+        .education-badge:hover {
+            background: rgba(255, 200, 87, 0.12);
+            transition: all 0.2s;
+        }
+        /* Responsive typography */
+        @media (max-width: 550px) {
+            .footer-about p {
+                font-size: 13px;
+            }
+            .footer-links a, .footer-contact .contact-item p, .footer-contact .contact-item a {
+                font-size: 12px;
+            }
+        }
+        /* Ensure contact links display properly */
+        .footer-contact .contact-item a {
+            display: inline-block;
+        }
+    </style>
+</body>
+</html>
